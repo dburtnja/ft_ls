@@ -19,12 +19,32 @@
 # include "./get_next_line.h"
 # include "ft_printf/ft_printf.h"
 
+# define TRUE		1
+# define FALSE		0
+
 typedef struct		s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_node
+{
+	void			*data;
+	size_t			data_size;
+	struct s_node	*prev;
+	struct s_node	*next;
+}					t_node;
+
+typedef struct 		s_doubly_list
+{
+	size_t 			size;
+	t_node			*head;
+	t_node			*tail;
+	t_node			*current;
+	size_t 			current_id;
+}					t_doubly_list;
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstadd(t_list **alst, t_list *new);
@@ -94,5 +114,11 @@ int					ft_lentoc(char *s, char c);
 int					ft_nbrlen(int i);
 void				ft_lstprint_str(t_list *p);
 t_list				*ft_strsplit_lst(char const *s, char c);
+void                *ft_memalloc_error(size_t size);
+long                ft_abs(long nbr);
+void     			insert_before(t_node *node_in_list, t_node *node, t_doubly_list *list, size_t pos);
+size_t   			add_from_start(t_doubly_list *list, size_t pos, t_node *node);
+size_t				add_from_current(t_doubly_list *list, size_t pos, t_node *node);
+size_t   			add_from_end(t_doubly_list *list, size_t pos, t_node *node);
 
 #endif

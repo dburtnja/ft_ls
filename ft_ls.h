@@ -5,11 +5,11 @@
 #ifndef FT_LS_FT_LS_H
 # define FT_LS_FT_LS_H
 
-# define    FLAG_l = 1;
-# define    FLAG_R = 2;
-# define    FLAG_a = 4;
-# define    FLAG_r = 8;
-# define    FLAG_t = 16;
+# define    FLAG_l 1
+# define    FLAG_R 2
+# define    FLAG_a 4
+# define    FLAG_r 8
+# define    FLAG_t 16
 
 typedef struct      s_ls
 {

@@ -16,19 +16,20 @@ int     main(int argc, char **argv)
         ls->start_path = argv[1];
         read_arguments(ls, &argv[2], argc - 2);
     }
-
+    ft_printf("%08b\n", ls->flags);
+    ft_putendl("start ft_ls");
+//    DIR             *dir;
+//    struct dirent   *entry;
+//
+//
+//    if ((dir = opendir(argv[1])) == NULL) {
+//        perror(ft_strjoin("Fail to open: ", argv[1]));
+//        exit(-1);
+//    }
+//    while ((entry = readdir(dir)) != NULL)
+//        ft_printf("INO: %d; NAME: %s; TYPE: %d; RECLEN: %d\n", entry->d_ino, entry->d_name, entry->d_type, entry->d_reclen);
+//    if (argc > 0)
+//        ft_putendl(argv[1]);
     return (0);
 }
 
-//DIR             *dir;
-//struct dirent   *entry;
-//
-//
-//if ((dir = opendir(argv[1])) == NULL) {
-//perror(ft_strjoin("Fail to open: ", argv[1]));
-//exit(-1);
-//}
-//while ((entry = readdir(dir)) != NULL)
-//ft_printf("INO: %d; NAME: %s; TYPE: %d; RECLEN: %d\n", entry->d_ino, entry->d_name, entry->d_type, entry->d_reclen);
-//if (argc > 0)
-//ft_putendl(argv[1]);

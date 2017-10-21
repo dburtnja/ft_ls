@@ -116,9 +116,13 @@ void				ft_lstprint_str(t_list *p);
 t_list				*ft_strsplit_lst(char const *s, char c);
 void                *ft_memalloc_error(size_t size);
 long                ft_abs(long nbr);
-void     			insert_before(t_node *node_in_list, t_node *node, t_doubly_list *list, size_t pos);
-size_t   			add_from_start(t_doubly_list *list, size_t pos, t_node *node);
-size_t				add_from_current(t_doubly_list *list, size_t pos, t_node *node);
-size_t   			add_from_end(t_doubly_list *list, size_t pos, t_node *node);
+t_doubly_list       *new_doubly_list();
+t_node              *new_node(void *data, size_t data_size);
+void                add_to_front(t_doubly_list *list, t_node *node);
+void                add_to_back(t_doubly_list *list, t_node *node);
+
+
+
+
 
 #endif

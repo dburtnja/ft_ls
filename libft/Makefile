@@ -79,6 +79,8 @@ SRC =	ft_memset.c\
 		ft_lstadd_back.c\
 		ft_strsplit_lst.c\
 		ft_lentoc.c\
+		ft_doubly_list.c\
+		ft_memalloc_error.c\
 		get_next_line.c
 
 OBJ = $(SRC:.c=.o)

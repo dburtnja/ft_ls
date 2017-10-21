@@ -53,7 +53,7 @@ void        read_arguments(t_ls *ls, char **args, int args_size)
         else if (args[i][0] == '-' && args[i][1] == '-')
             ls->flags |= read_flags_word(args[i] + 2);
         else
-            //add to list
+            ft_putendl("a");//add to list
         i++;
     }
 }

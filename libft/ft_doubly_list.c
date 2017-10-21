@@ -4,14 +4,6 @@
 
 #include "libft.h"
 
-t_doubly_list   *new_doubly_list()
-{
-    t_doubly_list   *ret;
-
-    ret = (t_doubly_list *)ft_memalloc_error(sizeof(t_doubly_list));
-    return ret;
-}
-
 t_node          *new_node(void *data, size_t data_size)
 {
     t_node  *node;
@@ -57,4 +49,18 @@ void            add_to_back(t_doubly_list *list, t_node *node)
     else
         node->prev->next = node;
     (list->size)++;
+}
+
+t_doubly_list   *new_doubly_list(t_node *node)
+{
+    t_doubly_list   *ret;
+
+    ret = (t_doubly_list *)ft_memalloc_error(sizeof(t_doubly_list));
+    if (node != NULL)
+    {
+        ret->head = node;
+        ret->tail = node;
+        ret->size = 1;
+    }
+    return ret;
 }

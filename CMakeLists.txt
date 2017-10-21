@@ -102,6 +102,6 @@ set(SOURCE_FILES
         libft/get_next_line.h
         libft/libft.h
         ft_ls.c
-        ft_ls.h read_arguments.c libft/ft_memalloc_error.c error.c libft/ft_doubly_list.c libft/modulo.c libft/ft_abs.c)
+        ft_ls.h read_arguments.c libft/ft_memalloc_error.c error.c libft/ft_doubly_list.c libft/modulo.c libft/ft_abs.c directory_struct.c)
 
 add_executable(ft_ls ${SOURCE_FILES})

@@ -10,16 +10,26 @@
 # define    FLAG_a 4
 # define    FLAG_r 8
 # define    FLAG_t 16
+# define    FLAG_help 32
+
+# include "libft/libft.h"
 
 typedef struct      s_ls
 {
-    char            *start_path;
     int             flags;
-    char            **dirs;
+    char            *main_dir_name;
+    t_doubly_list   *dirs;
+
 }                   t_ls;
+
+typedef struct      s_dir
+{
+    char            *dir_name;
+}                   t_dir;
 
 void                read_arguments(t_ls *ls, char **args, int args_size);
 void                error(char *message, int status);
+t_dir               *new_dir(char *name);
 
 
 #endif //FT_LS_FT_LS_H

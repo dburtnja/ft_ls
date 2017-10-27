@@ -127,5 +127,7 @@ int					ft_nbrlen_base(unsigned long long i,
 		unsigned long long base);
 void				nbr_to_str(unsigned long long value, unsigned
 		long long base, char **str, int up);
+size_t				collect_str(t_arg *head, char **str);
+char				*ft_format(char *str, ...);
 
 #endif

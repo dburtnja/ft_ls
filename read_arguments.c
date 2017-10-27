@@ -42,16 +42,6 @@ static int  read_flags_word(char *flag)
     error(ft_strjoin("No such flag: ", flag), -2);
 }
 
-static char *add_root(char *root, char *dir)
-{
-    char    *ret;
-
-    root = ft_strjoin(root, "/");
-    ret = ft_strjoin(root, dir);
-    ft_memdel((void **) &root);
-    return ret;
-}
-
 void        read_arguments(t_ls *ls, char **args, int args_size)
 {
     int     i;
@@ -67,9 +57,9 @@ void        read_arguments(t_ls *ls, char **args, int args_size)
         else if (args[i][0] == '-')
             ls->flags |= read_flags_letters(args[i] + 1);
         else
-            add_to_back(ls->dirs, new_node(new_dir(args[i]), sizeof_dir_struct));
+            add_to_back(ls->dirs, new_node(new_dir(args[i], ls->main_dir_name), sizeof_dir_struct));
         i++;
     }
     if (ls->dirs->size == 0)
-        add_to_front(ls->dirs, new_node(new_dir(ls->main_dir_name), sizeof_dir_struct));
+        add_to_front(ls->dirs, new_node(new_dir(".", ls->main_dir_name), sizeof_dir_struct));
 }

@@ -10,9 +10,11 @@ int open_directory(t_dir *directory, t_ls *ls)
     struct dirent   *entry;
 
     ft_putendl(directory->dir_name);
+    ft_putendl(directory->dir_with_path);
     if ((dir = opendir(directory->dir_with_path)) == NULL) {
         perror(ft_format("ft_ls: cannot excess d'%s'", directory->dir_name));
-        ft_putendl(directory->dir_with_path);}
+        ft_putendl(directory->dir_with_path);
+    }
     directory->files = new_doubly_list(NULL);
     while ((entry = readdir(dir)) != NULL)
     {

@@ -14,11 +14,14 @@ t_file  *new_file(char *name, char *path)
     return (file);
 }
 
-void    open_file(t_file *file)
+void    open_file(t_ls *ls, t_file *file)
 {
-    int result;
+    int     result;
+    char    *full_file_name;
 
-    result = stat(file->file_with_path, &(file->info));
+    full_file_name = ft_strjoin(ls->main_dir_name, file->file_with_path);
+    result = stat(full_file_name, &(file->info));
+    ft_strdel(&full_file_name);
     if (result != 0)
         perror(ft_format("ft_ls: cannot excess f'%s'", file->file_name));
 }

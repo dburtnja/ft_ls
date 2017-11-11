@@ -15,13 +15,12 @@ void    recursive_search(t_ls *ls, t_dir *dir)
     while (node)
     {
         file = (t_file*)(node->data);
-        open_file(file);
         if (file->info.st_mode & S_IFDIR)
         {
             if (dir->dir_name[ft_strlen(dir->dir_name) - 1] == '/')
-                new_directory = new_dir(file->file_name, ls->main_dir_name);
+                new_directory = new_dir(file->file_name, file->file_with_path);
             else
-                new_directory = new_dir(file->file_name, ls->main_dir_name);
+                new_directory = new_dir(file->file_name, file->file_with_path);
             add_to_back(ls->dirs, new_node(new_directory, sizeof(t_dir)));
             recursive_search(ls, ls->dirs->tail->data);
         }

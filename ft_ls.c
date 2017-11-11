@@ -1,5 +1,4 @@
 
-
 #include "ft_ls.h"
 #include "libft/ft_printf/ft_printf.h"
 #include "libft/libft.h"
@@ -7,6 +6,8 @@
 void    debug_ls(t_ls *ls)
 {
     t_node  *node;
+    t_node  *node_file;
+    t_file  *file;
 
     ft_putendl("=====================START PRINT LS=======================");
     ft_printf("Flags: %016b\n", ls->flags);
@@ -14,6 +15,13 @@ void    debug_ls(t_ls *ls)
     while (node)
     {
         ft_putendl(((t_dir*)node->data)->dir_name);
+        node_file = ((t_dir*)node->data)->files->head;
+        while (node_file)
+        {
+            file = (t_file *)node_file->data;
+            ft_printf("st_size %20d  %s\n", file->info.st_size, file->file_name);
+            node_file = node_file->next;
+        }
         node = node->next;
     }
     ft_putendl("=====================END PRINT LS=======================");

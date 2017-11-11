@@ -57,9 +57,9 @@ void        read_arguments(t_ls *ls, char **args, int args_size)
         else if (args[i][0] == '-')
             ls->flags |= read_flags_letters(args[i] + 1);
         else
-            add_to_back(ls->dirs, new_node(new_dir(args[i], ls->main_dir_name), sizeof_dir_struct));
+            add_to_back(ls->dirs, new_node(new_dir(args[i], ""), sizeof_dir_struct));
         i++;
     }
     if (ls->dirs->size == 0)
-        add_to_front(ls->dirs, new_node(new_dir(".", ls->main_dir_name), sizeof_dir_struct));
+        add_to_front(ls->dirs, new_node(new_dir(".", ""), sizeof_dir_struct));
 }

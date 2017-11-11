@@ -13,6 +13,6 @@ t_dir   *new_dir(char *name, char *path)
     if (ft_strcmp(".", name) == 0)
         dir->dir_with_path = path;
     else
-        dir->dir_with_path = ft_format("%s/%s", path, name);
+        dir->dir_with_path = ft_format("%s/%s", path, name[0] == '.' ? &(name[2]) : name);
     return (dir);
 }

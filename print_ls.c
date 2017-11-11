@@ -32,7 +32,7 @@ static void print_dirs(t_doubly_list *dirs, int flags)
     {
         dir = (t_dir*)node->data;
         if (dir_name)
-            ft_printf("%s:\n", dir->dir_name);
+            ft_printf(".%s:\n", dir->dir_with_path);
         print_files(dir->files, flags);
         node = node->next;
         if (node != NULL)

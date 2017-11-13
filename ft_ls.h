@@ -48,7 +48,7 @@ void                open_file(t_ls *ls, t_file *file);
 int                 open_directory(t_dir *directory, t_ls *ls);
 void                print_ls(t_ls *ls);
 void                recursive_search(t_ls *ls, t_dir *dir);
-
+void                sort_before_print(t_ls *ls);
 
 
 #endif //FT_LS_FT_LS_H

@@ -12,6 +12,9 @@
 # define    FLAG_t 16
 # define    FLAG_help 32
 
+# define    TYPE_DIR 1
+# define    TYPE_FILE 2
+
 # include "libft/libft.h"
 # include <stdio.h>
 # include <dirent.h>

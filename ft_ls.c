@@ -15,7 +15,7 @@ void    debug_ls(t_ls *ls)
     node = ls->dirs->head;
     while (node)
     {
-        ft_putendl(((t_dir*)node->data)->dir_name);
+        ft_putendl(((t_dir*)node->data)->dir_with_path);
         node_file = ((t_dir*)node->data)->files->head;
         while (node_file)
         {
@@ -51,13 +51,12 @@ int     main(int argc, char **argv)
 {
     t_ls    *ls;
 
-    ft_printf("%d", ft_strcmp("aba", "abb"));
     ls = (t_ls *)ft_memalloc_error(sizeof(t_ls));
     ls->main_dir_name = argv[1];
     if (argc > 0)
         read_arguments(ls, &argv[2], argc - 2);
     through_all_input(ls);
-    debug_ls(ls);
+//    debug_ls(ls);
     sort_before_print(ls);
     print_ls(ls);
     return (0);

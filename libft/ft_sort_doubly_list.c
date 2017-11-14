@@ -20,7 +20,7 @@ static int  replace_nodes(t_node *first, t_node *second)
     return TRUE;
 }
 
-int         ft_sort_doubly_list(t_doubly_list *list, int (*f)(t_node*, t_node*))
+int ft_sort_doubly_list(t_doubly_list *list, int (*f)(t_node *, t_node *, int), int reverse, int type)
 {
     int     is_sort;
     t_node  *node;
@@ -30,9 +30,9 @@ int         ft_sort_doubly_list(t_doubly_list *list, int (*f)(t_node*, t_node*))
     {
         node = list->head;
         is_sort = TRUE;
-        while (node->next)
+        while (node && node->next)
         {
-            if (f(node, node->next) > 0)
+            if ((reverse ? -f(node, node->next, type) : f(node, node->next, type)) > 0)
             {
                 is_sort = FALSE;
                 if (replace_nodes(node, node->next) == FALSE)

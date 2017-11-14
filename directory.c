@@ -21,7 +21,7 @@ int open_directory(t_dir *directory, t_ls *ls)
     while ((entry = readdir(dir)) != NULL)
     {
         t_file* new_file_var;
-        if (entry->d_name[0] != '.')
+        if (entry->d_name[0] != '.' || ls->flags & FLAG_a)
         {
             new_file_var = new_file(ft_strdup(entry->d_name), directory->dir_with_path);
             open_file(ls, new_file_var);

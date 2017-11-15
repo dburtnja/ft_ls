@@ -102,6 +102,20 @@ set(SOURCE_FILES
         libft/get_next_line.h
         libft/libft.h
         ft_ls.c
-        ft_ls.h read_arguments.c libft/ft_memalloc_error.c error.c libft/ft_doubly_list.c libft/modulo.c libft/ft_abs.c directory_struct.c recursive_search.c directory.c file.c libft/ft_printf/ft_formatf.c print_ls.c libft/ft_sort_doubly_list.c sort_before_print.c)
+        ft_ls.h read_arguments.c
+        libft/ft_memalloc_error.c
+        error.c
+        libft/ft_doubly_list.c
+        libft/modulo.c
+        libft/ft_abs.c
+        directory_struct.c
+        recursive_search.c
+        directory.c file.c
+        libft/ft_printf/ft_formatf.c
+        print_ls.c
+        libft/ft_sort_doubly_list.c
+        sort_before_print.c
+        simple_print.c
+        )
 
 add_executable(ft_ls ${SOURCE_FILES})

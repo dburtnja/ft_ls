@@ -39,6 +39,7 @@ typedef struct      s_dir
 typedef struct      s_file
 {
     char            *file_name;
+    int             name_len;
     char            *file_with_path;
     struct stat     info;
 }                   t_file;
@@ -52,6 +53,7 @@ int                 open_directory(t_dir *directory, t_ls *ls);
 void                print_ls(t_ls *ls);
 void                recursive_search(t_ls *ls, t_dir *dir);
 void                sort_before_print(t_ls *ls);
+void simple_print(t_doubly_list *list);
 
 
 #endif //FT_LS_FT_LS_H

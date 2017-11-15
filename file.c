@@ -11,6 +11,7 @@ t_file  *new_file(char *name, char *path)
     file = ft_memalloc_error(sizeof(t_file));
     file->file_name = name;
     file->file_with_path = ft_format("%s/%s", path, name);
+    file->name_len = (int)ft_strlen(file->file_name);
     return (file);
 }
 

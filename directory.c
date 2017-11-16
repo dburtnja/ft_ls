@@ -32,9 +32,9 @@ int open_directory(t_dir *directory, t_ls *ls)
     }
     ft_strdel(&full_dir_name);
     closedir(dir);
-    if (ls->flags & FLAG_a)
-    {
-        add_to_front(directory->files, new_node(new_file("..", directory->dir_with_path), sizeof(t_file)));
-        add_to_front(directory->files, new_node(new_file(".", directory->dir_with_path), sizeof(t_file)));
-    }
+//    if (ls->flags & FLAG_a)
+//    {
+//        add_to_front(directory->files, new_node(new_file("..", directory->dir_with_path), sizeof(t_file)));
+//        add_to_front(directory->files, new_node(new_file(".", directory->dir_with_path), sizeof(t_file)));
+//    }
 }

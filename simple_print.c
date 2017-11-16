@@ -11,26 +11,26 @@ static int  line_in_range(char ***array, int width)
 
 }
 
-static t_node   *copy_from_list_to_array(t_node *head, void **array, size_t columns)
+static t_node   *copy_from_list_to_array(t_node *head, t_file **array, size_t columns)
 {
     size_t  i;
 
     i = 0;
-    while (head || i < columns)
+    while (head && i < columns)
     {
-        array[i] = head;
+        array[i] = head->data;
         head = head->next;
         i++;
     }
     return head;
 }
 
-static void     ***make_lines(t_doubly_list* list, int lines_nbr)
+static t_file   ***make_lines(t_doubly_list* list, int lines_nbr)
 {
-    void    ***lines;
+    t_file  ***lines;
     int     i;
     size_t  columns;
-    void    *node;
+    t_node  *node;
 
     lines = ft_memalloc((size_t) lines_nbr + 1);
     columns = ((list->size + lines_nbr) / lines_nbr);
@@ -42,39 +42,55 @@ static void     ***make_lines(t_doubly_list* list, int lines_nbr)
         node = copy_from_list_to_array(node, lines[i], columns);
         i++;
     }
+    return lines;
 }
 
-static void print_lines(void ***array)
+static void print_lines(t_file ***array)
 {
     int lines;
     int columns;
 
+    char    *str;
+
     lines = 0;
-    ft_putendl("PRINTING ARRAY");
+
     while (array[lines])
     {
         columns = 0;
         while (array[lines][columns])
         {
-            ft_printf("%s  ", ((t_file *)array[lines][columns])->file_name);
+            ft_printf("%p\n", array[lines][columns]);
+//            str = array[lines][columns]->file_name;
+//            ft_putendl(str);
+//            ft_putendl(ft_format("%s", str));
+//            ft_putnbr(columns);
             columns++;
         }
+        ft_putnbr(columns);
         ft_putendl("");
         lines++;
     }
+//    for (int j = 0; j < 32; j++)
+//        ft_printf("%s", array[0][j]->file_name);
 }
 
 void simple_print(t_doubly_list *list)
 {
     struct winsize  w;
     int             lines_nbr;
-    void            ***lines_to_print;
+    t_file          ***lines_to_print;
 
-    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w); //w.ws_col
+
+
+
+//    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w); //w.ws_col
+
     lines_nbr = 1;
     while (TRUE)
     {
         lines_to_print = make_lines(list, lines_nbr);
+
+
 //        if (line_in_range(lines_to_print, 50) || ft_strlen((char*)(*lines_to_print)) == 1)
         break;
     }

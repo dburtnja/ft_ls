@@ -4,6 +4,15 @@
 
 #include "ft_ls.h"
 
+static char *remove_dot(char *name)
+{
+    if (ft_strcmp(name, ".") || ft_strcmp(name, ".."))
+        return name;
+    while (*name == '.')
+        name++;
+    return name;
+}
+
 static int  by_name(t_node *first, t_node *second, int type)
 {
     char    *first_name;
@@ -20,7 +29,7 @@ static int  by_name(t_node *first, t_node *second, int type)
         second_name = ft_strmap(((t_file *) second->data)->file_name, &ft_tolower);
     }
     if (type == TYPE_FILE || type == TYPE_DIR)
-        return ft_strcmp(first_name, second_name);
+        return ft_strcmp(remove_dot(first_name), remove_dot(second_name));
     else
         return (0);
 }

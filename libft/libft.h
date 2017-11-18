@@ -120,7 +120,8 @@ t_doubly_list       *new_doubly_list(t_node *node);
 t_node              *new_node(void *data, size_t data_size);
 void                add_to_front(t_doubly_list *list, t_node *node);
 void                add_to_back(t_doubly_list *list, t_node *node);
-int ft_sort_doubly_list(t_doubly_list *list, int (*f)(t_node *, t_node *, int), int reverse, int type);
+int					ft_sort_doubly_list(t_doubly_list *list, int (*f)(t_node *, t_node *, int), int reverse, int type);
+void    			*ft_double_list_to_array(t_doubly_list *list);
 
 
 

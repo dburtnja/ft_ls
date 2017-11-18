@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.8)
 project(ft_ls)
 
 set(CMAKE_CXX_STANDARD C99)
-set (CMAKE_C_FLAGS "-g -Wall -Wextra")
+#set (CMAKE_C_FLAGS "-g -Wall -Wextra")
 
 set(SOURCE_FILES
         libft/ft_printf/check_nbr.c
@@ -117,6 +117,7 @@ set(SOURCE_FILES
         libft/ft_sort_doubly_list.c
         sort_before_print.c
         simple_print.c
+        libft/ft_double_list_to_array.c
         )
 
 add_executable(ft_ls ${SOURCE_FILES})

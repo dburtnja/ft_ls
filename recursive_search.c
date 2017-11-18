@@ -4,6 +4,17 @@
 
 #include "ft_ls.h"
 
+int		file_is_directory(t_file *file)
+{
+	if (ft_strcmp(file->file_name, ".") == 0)
+		return FALSE;
+	if (ft_strcmp(file->file_name, "..") == 0)
+		return FALSE;
+	if (S_ISDIR(file->info.st_mode))
+		return TRUE;
+	return FALSE;
+}
+
 void    recursive_search(t_ls *ls, t_dir *dir)
 {
     t_node  *node;
@@ -15,7 +26,7 @@ void    recursive_search(t_ls *ls, t_dir *dir)
     while (node)
     {
         file = (t_file*)(node->data);
-        if (file->info.st_mode & S_IFDIR)
+        if (file_is_directory(file))
         {
             if (dir->dir_name[ft_strlen(dir->dir_name) - 1] == '/')
                 new_directory = new_dir(file->file_name, file->file_with_path);

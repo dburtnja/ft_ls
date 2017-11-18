@@ -22,7 +22,12 @@ void    open_file(t_ls *ls, t_file *file)
 
     full_file_name = ft_strjoin(ls->main_dir_name, file->file_with_path);
     result = stat(full_file_name, &(file->info));
-    ft_strdel(&full_file_name);
     if (result != 0)
+        result = lstat(full_file_name, &(file->info));
+    if (result != 0)
+    {
         perror(ft_format("ft_ls: cannot excess f'%s'", file->file_name));
+        exit(0);
+    }
+    ft_strdel(&full_file_name);
 }

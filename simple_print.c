@@ -2,8 +2,6 @@
 // Created by denys on 15.11.17.
 //
 
-#include <asm/ioctls.h>
-#include <sys/ioctl.h>
 #include "ft_ls.h"
 
 static size_t   get_column_size(t_file ***array, size_t column_nbr)
@@ -110,26 +108,26 @@ static void print_lines(t_file ***array, size_t *column_sizes)
             ft_strdel(&format);
             columns++;
         }
-        ft_putendl("");
         lines++;
+        if (array[lines])
+            ft_putendl("");
     }
 }
 
-void simple_print(t_doubly_list *list)
+void simple_print(t_doubly_list *list, size_t width)
 {
-    struct winsize  w;
     size_t          lines_nbr;
     size_t          columns;
     size_t          *columns_sizes;
     t_file          ***lines_to_print;
 
-    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w); //w.ws_col
     lines_nbr = 1;
     while (TRUE)
     {
         columns = ((list->size + lines_nbr) / lines_nbr);
         lines_to_print = make_lines(list, lines_nbr, columns);
-        if (line_in_range(lines_to_print, w.ws_col, columns, &columns_sizes) || columns == 1)
+        if (line_in_range(lines_to_print, width, columns, &columns_sizes) ||
+				columns == 1)
             break;
         ft_memdel((void **) &columns_sizes);
         lines_nbr++;

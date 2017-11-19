@@ -10,7 +10,7 @@ static void print_dirs(t_doubly_list *dirs, int flags)
 {
     int             dir_name;
     struct winsize  w;
-    int             width;
+    size_t          width;
     t_node          *node;
     t_dir           *dir;
 
@@ -18,6 +18,7 @@ static void print_dirs(t_doubly_list *dirs, int flags)
         width = w.ws_col; //w.ws_col
     else
         width = 0;
+    width = 50;
     dir_name = dirs->size == 1 ? FALSE : TRUE;
     node = dirs->head;
     while (node)
@@ -33,6 +34,7 @@ static void print_dirs(t_doubly_list *dirs, int flags)
         if (node != NULL)
             ft_putendl("");
     }
+//    ft_putendl("");
 }
 
 void    print_ls(t_ls *ls)

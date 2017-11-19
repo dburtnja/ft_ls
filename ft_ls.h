@@ -53,7 +53,8 @@ int                 open_directory(t_dir *directory, t_ls *ls);
 void                print_ls(t_ls *ls);
 void                recursive_search(t_ls *ls, t_dir *dir);
 void                sort_before_print(t_ls *ls);
-void simple_print(t_doubly_list *list, size_t width);
+void 				simple_print(t_doubly_list *list, size_t width);
+int  				by_name(t_node *first, t_node *second, int type);
 
 
 #endif //FT_LS_FT_LS_H

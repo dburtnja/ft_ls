@@ -10,15 +10,14 @@ static void add_files_to_dir(t_ls *ls, DIR *dir, t_dir *directory)
     struct dirent   *entry;
     t_file*         new_file_var;
 
-    directory->files = new_doubly_list(NULL);
+    directory->files = new_doubly_list(NULL, &by_name, ls->flags & FLAG_r, TYPE_DIR);
     while ((entry = readdir(dir)) != NULL)
     {
         if (entry->d_name[0] != '.' || ls->flags & FLAG_a)
         {
             new_file_var = new_file(ft_strdup(entry->d_name), directory->dir_with_path);
             open_file(ls, new_file_var);
-            add_to_back(directory->files, new_node(new_file_var, sizeof
-                    (t_file)));
+            ft_add_with_sort(directory->files, new_node(new_file_var, sizeof(t_file)));
         }
     }
 }

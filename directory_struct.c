@@ -14,6 +14,5 @@ t_dir   *new_dir(char *name, char *path)
         dir->dir_with_path = path;
     else
         dir->dir_with_path = path;
-//        dir->dir_with_path = ft_format("%s/%s", path, name[0] == '.' ? &(name[2]) : name);
     return (dir);
 }

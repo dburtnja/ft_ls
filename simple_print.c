@@ -122,6 +122,7 @@ void simple_print(t_doubly_list *list, size_t width)
     t_file          ***lines_to_print;
 
     lines_nbr = 1;
+	ft_printf("size ============== %d\n", list->size);
     while (TRUE)
     {
         columns = ((list->size + lines_nbr) / lines_nbr);

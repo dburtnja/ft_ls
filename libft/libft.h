@@ -42,9 +42,14 @@ typedef struct 		s_doubly_list
 	size_t 			size;
 	t_node			*head;
 	t_node			*tail;
+	int				(*sort_func)(t_node *, t_node *, int);
+	int 			sort_data;
+	int				revers;
+	int				sort;
 	t_node			*current;
 	size_t 			current_id;
 }					t_doubly_list;
+
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstadd(t_list **alst, t_list *new);
@@ -116,12 +121,17 @@ void				ft_lstprint_str(t_list *p);
 t_list				*ft_strsplit_lst(char const *s, char c);
 void                *ft_memalloc_error(size_t size);
 long                ft_abs(long nbr);
-t_doubly_list       *new_doubly_list(t_node *node);
+t_doubly_list *
+new_doubly_list(t_node *node, int (*sort_func)(t_node *, t_node *, int),
+				int sort_flags, int revers);
 t_node              *new_node(void *data, size_t data_size);
 void                add_to_front(t_doubly_list *list, t_node *node);
 void                add_to_back(t_doubly_list *list, t_node *node);
 int					ft_sort_doubly_list(t_doubly_list *list, int (*f)(t_node *, t_node *, int), int reverse, int type);
 void    			*ft_double_list_to_array(t_doubly_list *list);
+int					swap_nodes(t_node *first, t_node *second);
+int					add_after_node(t_doubly_list *list, t_node *after, t_node *node);
+int					ft_add_with_sort(t_doubly_list *sort_list, t_node *node);
 
 
 

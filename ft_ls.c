@@ -57,6 +57,7 @@ int     main(int argc, char **argv)
         read_arguments(ls, &argv[2], argc - 2);
     through_all_input(ls);
 //    debug_ls(ls);
+//	ft_putendl("start sort");
     sort_before_print(ls);
     print_ls(ls);
     return (0);

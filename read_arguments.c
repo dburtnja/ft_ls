@@ -49,7 +49,7 @@ void        read_arguments(t_ls *ls, char **args, int args_size)
 
     i = 0;
     sizeof_dir_struct = sizeof(t_dir);
-    ls->dirs = new_doubly_list(NULL);
+    ls->dirs = new_doubly_list(NULL, 0, 0, 0);
     while (args_size > i)
     {
         if (args[i][0] == '-' && args[i][1] == '-')

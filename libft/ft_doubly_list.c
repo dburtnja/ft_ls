@@ -29,29 +29,9 @@ void            delete_doubly_list(t_doubly_list **list)
     ft_memdel((void **) list);
 }
 
-void            add_to_front(t_doubly_list *list, t_node *node)
-{
-    node->next = list->head;
-    list->head = node;
-    if (node->next == NULL)
-        list->tail = node;
-    else
-        node->next->prev = node;
-    (list->size)++;
-}
-
-void            add_to_back(t_doubly_list *list, t_node *node)
-{
-    node->prev = list->tail;
-    list->tail = node;
-    if (node->prev == NULL)
-        list->head = node;
-    else
-        node->prev->next = node;
-    (list->size)++;
-}
-
-t_doubly_list   *new_doubly_list(t_node *node)
+t_doubly_list *
+new_doubly_list(t_node *node, int (*sort_func)(t_node *, t_node *, int),
+				int sort_data, int revers)
 {
     t_doubly_list   *ret;
 
@@ -62,5 +42,10 @@ t_doubly_list   *new_doubly_list(t_node *node)
         ret->tail = node;
         ret->size = 1;
     }
+	ret->sort_func = sort_func;
+	ret->sort_data = sort_data;
+	ret->revers = revers;
+	if (ret->sort_func != NULL)
+		ret->sort = TRUE;
     return ret;
 }

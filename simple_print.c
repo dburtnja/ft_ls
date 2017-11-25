@@ -13,7 +13,9 @@ static size_t   get_column_size(t_file ***array, size_t column_nbr)
     column_size = 0;
     while (array[line])
     {
-        if (array[line][column_nbr] && column_size < array[line][column_nbr]->name_len)
+		if (array[line][column_nbr])
+			ft_printf("%d %s \n", array[line][column_nbr]->name_len, array[line][column_nbr]->file_name);
+		if (array[line][column_nbr] && column_size < array[line][column_nbr]->name_len)
             column_size = (size_t) array[line][column_nbr]->name_len;
         line++;
     }
@@ -29,7 +31,8 @@ static size_t   *get_column_sizes(t_file ***array, size_t columns)
     column_sizes = ft_memalloc_error(sizeof(size_t*) * (columns + 1));
     while (array[0][column_nbr])
     {
-        column_sizes[column_nbr] = get_column_size(array, column_nbr);
+		ft_printf("Column = %d\n", column_nbr);
+		column_sizes[column_nbr] = get_column_size(array, column_nbr);
         if (array[0][column_nbr + 1])
             column_sizes[column_nbr] += 2;
         column_nbr++;
@@ -104,7 +107,7 @@ static void print_lines(t_file ***array, size_t *column_sizes)
         {
             last = (array[lines][columns + 1] == NULL);
             format = ft_format("%%-%ds", last ? 0 :column_sizes[columns]);
-            ft_printf(format, array[lines][columns]->file_name);
+            printf(format, array[lines][columns]->file_name);
             ft_strdel(&format);
             columns++;
         }
@@ -125,7 +128,7 @@ void simple_print(t_doubly_list *list, size_t width)
 	ft_printf("size ============== %d\n", list->size);
     while (TRUE)
     {
-        columns = ((list->size + lines_nbr) / lines_nbr);
+        columns = ((list->size + (lines_nbr - 1)) / lines_nbr);
         lines_to_print = make_lines(list, lines_nbr, columns);
         if (line_in_range(lines_to_print, width, columns, &columns_sizes) ||
 				columns == 1)

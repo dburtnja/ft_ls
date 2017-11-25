@@ -19,6 +19,7 @@ static void print_dirs(t_doubly_list *dirs, int flags)
     else
         width = 0;
     width = 50;
+	ft_printf("##################################################\n");
     dir_name = dirs->size == 1 ? FALSE : TRUE;
     node = dirs->head;
     while (node)

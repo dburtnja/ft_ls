@@ -4,7 +4,7 @@
 
 #include "ft_ls.h"
 
-static int	my_strcmp(const char *s1, const char *s2)
+static int	my_strcmp(const unsigned char *s1, const unsigned char *s2)
 {
 	size_t  first;
 	size_t  second;

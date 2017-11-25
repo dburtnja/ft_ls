@@ -18,8 +18,6 @@ static void print_dirs(t_doubly_list *dirs, int flags)
         width = w.ws_col; //w.ws_col
     else
         width = 0;
-    width = 50;
-	ft_printf("##################################################\n");
     dir_name = dirs->size == 1 ? FALSE : TRUE;
     node = dirs->head;
     while (node)
@@ -35,7 +33,7 @@ static void print_dirs(t_doubly_list *dirs, int flags)
         if (node != NULL)
             ft_putendl("");
     }
-//    ft_putendl("");
+    ft_putendl("");
 }
 
 void    print_ls(t_ls *ls)

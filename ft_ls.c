@@ -20,7 +20,7 @@ void    debug_ls(t_ls *ls)
         while (node_file)
         {
             file = (t_file *)node_file->data;
-            ft_printf(" %.12s %s\n", &(ctime(&(file->info.st_ctim.tv_sec))[4]), file->file_name);
+            ft_printf("%d %.12s %s\n", file->info.st_nlink, &(ctime(&(file->info.st_ctim.tv_sec))[4]), file->file_name);
             node_file = node_file->next;
         }
         node = node->next;

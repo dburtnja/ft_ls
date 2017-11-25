@@ -26,7 +26,7 @@ static void print_dirs(t_doubly_list *dirs, int flags)
         if (dir_name)
             ft_printf(".%s:\n", dir->dir_with_path);
         if (flags & FLAG_l)
-            ft_putendl("PRINT AS LIST");
+            list_print(dir);
         else
             simple_print(dir->files, width);
         node = node->next;

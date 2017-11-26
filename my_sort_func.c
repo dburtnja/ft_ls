@@ -53,16 +53,17 @@ int			by_mod_time(t_node *first, t_node *second, int type)
 
 	if (type == TYPE_DIR)
 	{
-		first_time = ((t_dir*)first->data)->info.st_atim.tv_sec;
-		second_time =((t_dir*)second->data)->info.st_atim.tv_sec;
+		first_time = ((t_dir*)first->data)->info.st_mtim.tv_sec;
+		second_time =((t_dir*)second->data)->info.st_mtim.tv_sec;
 	}
 	else if (type == TYPE_FILE)
 	{
-		first_time = ((t_file *) first->data)->info.st_atim.tv_sec;
-		second_time =((t_file *) second->data)->info.st_atim.tv_sec;
+		first_time = ((t_file *) first->data)->info.st_mtim.tv_sec;
+		second_time =((t_file *) second->data)->info.st_mtim.tv_sec;
 	}
 	if (type == TYPE_FILE || type == TYPE_DIR)
-		return first_time < second_time;
+		return first_time == second_time ? by_name(first, second, type) :
+			   first_time < second_time;
 	else
 		return (0);
 }

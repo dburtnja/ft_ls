@@ -25,7 +25,7 @@ static int	my_strcmp(const unsigned char *s1, const unsigned char *s2)
 	return s1[first] - s2[second];
 }
 
-int  by_name(t_node *first, t_node *second, int type)
+int			by_name(t_node *first, t_node *second, int type)
 {
 	char    *first_name;
 	char    *second_name;
@@ -42,6 +42,27 @@ int  by_name(t_node *first, t_node *second, int type)
 	}
 	if (type == TYPE_FILE || type == TYPE_DIR)
 		return my_strcmp(first_name, second_name);
+	else
+		return (0);
+}
+
+int			by_mod_time(t_node *first, t_node *second, int type)
+{
+	long	first_time;
+	long	second_time;
+
+	if (type == TYPE_DIR)
+	{
+		first_time = ((t_dir*)first->data)->info.st_atim.tv_sec;
+		second_time =((t_dir*)second->data)->info.st_atim.tv_sec;
+	}
+	else if (type == TYPE_FILE)
+	{
+		first_time = ((t_file *) first->data)->info.st_atim.tv_sec;
+		second_time =((t_file *) second->data)->info.st_atim.tv_sec;
+	}
+	if (type == TYPE_FILE || type == TYPE_DIR)
+		return first_time < second_time;
 	else
 		return (0);
 }

@@ -4,15 +4,15 @@
 
 #include "ft_ls.h"
 
-t_dir   *new_dir(char *name, char *path)
+t_dir *new_dir(char *name)
 {
     t_dir   *dir;
 
     dir = ft_memalloc_error(sizeof(t_dir));
     dir->dir_name = name;
-    if (ft_strcmp(".", name) == 0)
-        dir->dir_with_path = path;
+    if (name[0] == '/')
+        dir->dir_with_path = name;
     else
-        dir->dir_with_path = path;
+        dir->dir_with_path = ft_strjoin("./", name);
     return (dir);
 }

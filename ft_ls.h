@@ -1,6 +1,3 @@
-//
-// Created by denys on 01.09.17.
-//
 
 #ifndef FT_LS_FT_LS_H
 # define FT_LS_FT_LS_H
@@ -24,7 +21,6 @@
 typedef struct      s_ls
 {
     int             flags;
-    char            *main_dir_name;
     t_doubly_list   *dirs;
 
 }                   t_ls;
@@ -47,7 +43,7 @@ typedef struct      s_file
 
 void                read_arguments(t_ls *ls, char **args, int args_size);
 void                error(char *message, int status);
-t_dir               *new_dir(char *name, char *path);
+t_dir				*new_dir(char *name);
 t_file              *new_file(char *name, char *path);
 void                open_file(t_ls *ls, t_file *file);
 int                 open_directory(t_dir *directory, t_ls *ls);
@@ -61,7 +57,11 @@ char				*get_group_name(gid_t id);
 char				*get_user_name(uid_t id);
 char				*read_chmod(struct stat info);
 int					by_mod_time(t_node *first, t_node *second, int type);
-
+t_file   			***make_lines(t_doubly_list* list, size_t line_nbrs,
+								size_t columns);
+size_t 				*get_column_sizes(t_file ***array, size_t columns);
+size_t				create_simple_lines_arrays(t_node *file, int *column_sizes,
+												 char ***lines_array);
 
 
 #endif //FT_LS_FT_LS_H

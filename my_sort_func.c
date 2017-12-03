@@ -13,15 +13,13 @@ static int	my_strcmp(const unsigned char *s1, const unsigned char *s2)
 	second = 0;
 	while (s1[first] == s2[second] && s1[first] != '\0' && s2[second] != '\0')
 	{
+		while (ft_isascii(s1[first]) && !ft_isalnum(s1[first]))
+			first++;
+		while (ft_isascii(s2[second]) && !ft_isalnum(s2[second]))
+			second++;
 		first++;
 		second++;
-		while (s1[first] == '.')
-			first++;
-		while (s2[second] == '.')
-			second++;
 	}
-	if (s1[first] - s2[second] == 0)
-		return (int) (first - second);
 	return s1[first] - s2[second];
 }
 

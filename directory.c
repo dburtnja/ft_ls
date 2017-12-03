@@ -1,6 +1,3 @@
-//
-// Created by denys on 10/22/17.
-//
 
 #include "ft_ls.h"
 
@@ -25,15 +22,12 @@ static void add_files_to_dir(t_ls *ls, DIR *dir, t_dir *directory)
 int open_directory(t_dir *directory, t_ls *ls)
 {
     DIR             *dir;
-    char            *full_dir_name;
 
-    full_dir_name = ft_strjoin(ls->main_dir_name, directory->dir_with_path);
-    if ((dir = opendir(full_dir_name)) == NULL)
+    if ((dir = opendir(directory->dir_with_path)) == NULL)
     {
-        ft_putendl(full_dir_name);
+        ft_putendl(directory->dir_with_path);
         perror(ft_format("ft_ls: cannot excess d'%s'", directory->dir_name));
     }
     add_files_to_dir(ls, dir, directory);
-    ft_strdel(&full_dir_name);
     closedir(dir);
 }

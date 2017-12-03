@@ -11,23 +11,23 @@ t_file  *new_file(char *name, char *path)
     file = ft_memalloc_error(sizeof(t_file));
     file->file_name = name;
     file->file_with_path = ft_format("%s/%s", path, name);
-    file->name_len = (int)ft_strlen(file->file_name);
+    if (((unsigned char*)file->file_name)[0] > 127)
+        file->name_len = (int)ft_strlen(file->file_name) / 2;
+    else
+        file->name_len = (int)ft_strlen(file->file_name);
     return (file);
 }
 
 void    open_file(t_ls *ls, t_file *file)
 {
     int     result;
-    char    *full_file_name;
 
-    full_file_name = ft_strjoin(ls->main_dir_name, file->file_with_path);
-    result = stat(full_file_name, &(file->info));
+    result = stat(file->file_with_path, &(file->info));
     if (result != 0)
-        result = lstat(full_file_name, &(file->info));
+        result = lstat(file->file_with_path, &(file->info));
     if (result != 0)
     {
         perror(ft_format("ft_ls: cannot excess f'%s'", file->file_name));
         exit(0);
     }
-    ft_strdel(&full_file_name);
 }

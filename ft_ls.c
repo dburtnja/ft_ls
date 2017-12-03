@@ -52,10 +52,9 @@ int     main(int argc, char **argv)
     t_ls    *ls;
 
     ls = (t_ls *)ft_memalloc_error(sizeof(t_ls));
-    ls->main_dir_name = argv[1];
-    if (argc > 0)
-        read_arguments(ls, &argv[2], argc - 2);
-    through_all_input(ls);
+    read_arguments(ls, &argv[1], argc - 1);
+//	debug_ls(ls);
+	through_all_input(ls);
 //    debug_ls(ls);
     sort_before_print(ls);
 //    debug_ls(ls);

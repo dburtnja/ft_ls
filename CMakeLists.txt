@@ -118,6 +118,6 @@ set(SOURCE_FILES
         sort_before_print.c
         simple_print.c
         libft/ft_double_list_to_array.c
-        libft/swap_nodes.c libft/ft_double_list_nodes.c libft/ft_add_with_sort.c my_sort_func.c list_print.c read_chmod.c get_owner_and_groupe_name.c)
+        libft/swap_nodes.c libft/ft_double_list_nodes.c libft/ft_add_with_sort.c my_sort_func.c list_print.c read_chmod.c get_owner_and_groupe_name.c simple_print_2.c list_print_2.c)
 
 add_executable(ft_ls ${SOURCE_FILES})

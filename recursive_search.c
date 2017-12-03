@@ -28,7 +28,7 @@ void    recursive_search(t_ls *ls, t_dir *dir)
         file = (t_file*)(node->data);
         if (file_is_directory(file))
         {
-			new_directory = new_dir(file->file_name, file->file_with_path);
+			new_directory = new_dir(file->file_name);
 			new_directory->info = file->info;
             add_to_back(ls->dirs, new_node(new_directory, sizeof(t_dir)));
             recursive_search(ls, ls->dirs->tail->data);

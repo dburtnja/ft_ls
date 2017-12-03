@@ -24,10 +24,7 @@ int open_directory(t_dir *directory, t_ls *ls)
     DIR             *dir;
 
     if ((dir = opendir(directory->dir_with_path)) == NULL)
-    {
-        ft_putendl(directory->dir_with_path);
-        perror(ft_format("ft_ls: cannot excess d'%s'", directory->dir_name));
-    }
+        perror(ft_format("ft_ls: cannot excess d'%s'", directory->dir_with_path));
     add_files_to_dir(ls, dir, directory);
     closedir(dir);
 }

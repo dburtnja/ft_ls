@@ -16,7 +16,7 @@ static void print_dirs(t_doubly_list *dirs, int flags)
     {
         dir = (t_dir*)node->data;
         if (dirs->size != 1)
-            ft_printf(".%s:\n", dir->dir_with_path);
+            ft_printf("%s:\n", dir->dir_with_path);
         if (flags & FLAG_l)
             list_print(dir);
         else

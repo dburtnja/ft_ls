@@ -1,5 +1,4 @@
 
-#include <asm/ioctls.h>
 #include <sys/ioctl.h>
 #include "ft_ls.h"
 

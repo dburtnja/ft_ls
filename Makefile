@@ -40,10 +40,10 @@ OBJ = $(SRC:.c=.o)
 all:	$(FT_PRINTF) $(LIB) $(NAME)
 
 $(LIB):
-		make -C ./libft
+		@make -C ./libft
 
 $(FT_PRINTF):
-		make -C ./libft/ft_printf
+		@make -C ./libft/ft_printf
 
 $(NAME): $(OBJ)
 		@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB) $(FT_PRINTF)

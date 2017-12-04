@@ -81,7 +81,18 @@ SRC =	ft_memset.c\
 		ft_lentoc.c\
 		ft_doubly_list.c\
 		ft_memalloc_error.c\
-		get_next_line.c
+		get_next_line.c\
+        ft_memalloc_error.c\
+        ft_doubly_list.c\
+        modulo.c\
+        ft_abs.c\
+        ft_printf/ft_formatf.c\
+        ft_sort_doubly_list.c\
+        ft_double_list_to_array.c\
+        swap_nodes.c\
+        ft_double_list_nodes.c\
+        ft_add_with_sort.c
+
 
 OBJ = $(SRC:.c=.o)
 

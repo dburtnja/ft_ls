@@ -131,7 +131,7 @@ int					ft_sort_doubly_list(t_doubly_list *list, int (*f)(t_node *, t_node *, in
 void    			*ft_double_list_to_array(t_doubly_list *list);
 int					swap_nodes(t_node *first, t_node *second);
 int					add_after_node(t_doubly_list *list, t_node *after, t_node *node);
-int					ft_add_with_sort(t_doubly_list *sort_list, t_node *node);
+void ft_add_with_sort(t_doubly_list *sort_list, t_node *node);
 
 
 

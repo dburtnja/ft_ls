@@ -56,7 +56,7 @@ t_list			*ft_strsplit_lst(char const *s, char c)
 			p->next = make_list(&str, c);
 			p = p->next;
 		}
-		if (str != '\0')
+		if (str)
 			str++;
 	}
 	return (head);

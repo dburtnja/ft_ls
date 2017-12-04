@@ -15,6 +15,7 @@ static int  flag_selector(char f)
     if (f == 't')
         return FLAG_t;
     error(ft_strjoin("No such flag: ", &f), -2); //might be an error in &f
+    return 0;
 }
 
 static int  read_flags_letters(char *flag)
@@ -37,6 +38,7 @@ static int  read_flags_word(char *flag)
     if (ft_strcmp(flag, "help") == 0)
         return FLAG_help;
     error(ft_strjoin("No such flag: ", flag), -2);
+    return 0;
 }
 
 void        read_arguments(t_ls *ls, char **args, int args_size)

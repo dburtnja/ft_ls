@@ -36,7 +36,7 @@ static void		add_to_existing(t_doubly_list *sort_list, t_node *node)
 		add_to_list(sort_list, sort_list->head, node);
 }
 
-int				ft_add_with_sort(t_doubly_list *sort_list, t_node *node)
+void			ft_add_with_sort(t_doubly_list *sort_list, t_node *node)
 {
 
 	if (sort_list->sort == FALSE)

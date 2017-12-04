@@ -4,6 +4,11 @@
 
 #include "ft_ls.h"
 
+static char my_to_lower(char c)
+{
+	return (char) ft_tolower(c);
+}
+
 static int	my_strcmp(const unsigned char *s1, const unsigned char *s2)
 {
 	size_t  first;
@@ -32,16 +37,16 @@ int			by_name(t_node *first, t_node *second, int type)
 
 	if (type == TYPE_DIR)
 	{
-		first_name = ft_strmap(((t_dir*)first->data)->dir_with_path, &ft_tolower);
-		second_name = ft_strmap(((t_dir*)second->data)->dir_with_path, &ft_tolower);
+		first_name = ft_strmap(((t_dir*)first->data)->dir_with_path, &my_to_lower);
+		second_name = ft_strmap(((t_dir*)second->data)->dir_with_path, &my_to_lower);
 	}
 	else if (type == TYPE_FILE)
 	{
-		first_name = ft_strmap(((t_file *) first->data)->file_name, &ft_tolower);
-		second_name = ft_strmap(((t_file *) second->data)->file_name, &ft_tolower);
+		first_name = ft_strmap(((t_file *) first->data)->file_name, &my_to_lower);
+		second_name = ft_strmap(((t_file *) second->data)->file_name, &my_to_lower);
 	}
 	if (type == TYPE_FILE || type == TYPE_DIR)
-		return my_strcmp(first_name, second_name);
+		return my_strcmp((unsigned char *) first_name, (unsigned char *) second_name);
 	else
 		return (0);
 }

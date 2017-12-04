@@ -18,7 +18,7 @@ t_file  *new_file(char *name, char *path)
     return (file);
 }
 
-void    open_file(t_ls *ls, t_file *file)
+void open_file(t_file *file)
 {
     int     result;
 

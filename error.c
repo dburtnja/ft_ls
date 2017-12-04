@@ -8,5 +8,5 @@
 void    error(char *message, int status)
 {
     perror(message);
-    exit(0);
+    exit(status);
 }

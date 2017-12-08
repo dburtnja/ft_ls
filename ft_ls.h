@@ -54,7 +54,7 @@ int  				by_name(t_node *first, t_node *second, int type);
 void				list_print(t_dir *dir);
 char				*get_group_name(gid_t id);
 char				*get_user_name(uid_t id);
-char				*read_chmod(struct stat info);
+char *read_chmod(struct stat info, char *file_name);
 int					by_mod_time(t_node *first, t_node *second, int type);
 t_file   			***make_lines(t_doubly_list* list, size_t line_nbrs,
 								size_t columns);

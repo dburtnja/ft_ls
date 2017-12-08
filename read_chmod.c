@@ -3,6 +3,7 @@
 //
 
 #include "ft_ls.h"
+#include <sys/xattr.h>
 
 static char	get_type(__mode_t st_mode)
 {
@@ -18,7 +19,7 @@ static char	get_type(__mode_t st_mode)
 		return 'c';
 	else if (S_ISFIFO(st_mode))
 		return 'p';
-	return ' ';
+	return (' ');
 }
 
 static void	put_chmod(__mode_t st_mode, char *chmod)
@@ -37,7 +38,20 @@ static void	put_chmod(__mode_t st_mode, char *chmod)
 		chmod[2] = '-';
 }
 
-char		*read_chmod(struct stat info)
+static char	add_attribute_marker(char *file_name)
+{
+	ssize_t	xattr;
+
+	xattr = listxattr(file_name, NULL, 0);
+	if (xattr > 0)
+		return ('@');
+	xattr = getxattr(file_name, "system.posix_acl_default", NULL, 0);
+	if (xattr > 0)
+		return ('+');
+	return (0);
+}
+
+char *read_chmod(struct stat info, char *file_name)
 {
 	char	*chmod;
 
@@ -46,5 +60,6 @@ char		*read_chmod(struct stat info)
 	put_chmod(info.st_mode & S_IRWXU, &(chmod[1]));
 	put_chmod(info.st_mode & S_IRWXG, &(chmod[4]));
 	put_chmod(info.st_mode & S_IRWXO, &(chmod[7]));
-	return chmod;
+	chmod[10] = add_attribute_marker(file_name);
+	return (chmod);
 }

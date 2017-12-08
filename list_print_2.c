@@ -21,7 +21,7 @@ static char	**create_simple_line_array(t_file *file, int *column_sizes)
 	char	**line_array;
 
 	line_array = ft_memalloc_error(sizeof(char *) * 8);
-	line_array[0] = read_chmod(file->info);
+	line_array[0] = read_chmod(file->info, file->file_with_path);
 	line_array[1] = ft_itoa((int) file->info.st_nlink);
 	line_array[2] = get_group_name(file->info.st_gid);
 	line_array[3] = get_user_name(file->info.st_uid);

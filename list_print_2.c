@@ -26,7 +26,7 @@ static char	**create_simple_line_array(t_file *file, int *column_sizes)
 	line_array[2] = get_group_name(file->info.st_gid);
 	line_array[3] = get_user_name(file->info.st_uid);
 	line_array[4] = ft_itoa((int) file->info.st_size);
-	line_array[5] = ft_strdup(ctime(&(file->info.st_mtim.tv_sec)));
+	line_array[5] = ft_strdup(ctime(&(file->info.st_mtimespec.tv_sec)));
 	line_array[6] = file->file_name;
 	update_column_sizes(column_sizes, line_array);
 	return line_array;

@@ -5,7 +5,7 @@
 #include "ft_ls.h"
 #include <sys/xattr.h>
 
-static char	get_type(__mode_t st_mode)
+static char	get_type(mode_t st_mode)
 {
 	if (S_ISREG(st_mode))
 		return '-';
@@ -22,7 +22,7 @@ static char	get_type(__mode_t st_mode)
 	return (' ');
 }
 
-static void	put_chmod(__mode_t st_mode, char *chmod)
+static void	put_chmod(mode_t st_mode, char *chmod)
 {
 	if (st_mode & S_IRUSR || st_mode & S_IRGRP || st_mode & S_IROTH)
 		chmod[0] = 'r';
@@ -42,10 +42,10 @@ static char	add_attribute_marker(char *file_name)
 {
 	ssize_t	xattr;
 
-	xattr = listxattr(file_name, NULL, 0);
+	xattr = listxattr(file_name, NULL, 0, XATTR_NOFOLLOW);
 	if (xattr > 0)
 		return ('@');
-	xattr = getxattr(file_name, "system.posix_acl_default", NULL, 0);
+	xattr = getxattr(file_name, "system.posix_acl_default", NULL, 0, 0, XATTR_NOFOLLOW);
 	if (xattr > 0)
 		return ('+');
 	return (0);

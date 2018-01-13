@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:49:26 by dburtnja          #+#    #+#             */
-/*   Updated: 2018/01/13 12:49:28 by dburtnja         ###   ########.fr       */
+/*   Updated: 2018/01/13 14:53:49 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 #include "libft/ft_printf/ft_printf.h"
 #include "libft/libft.h"
 
-static void through_all_input(t_ls *ls)
+static void	through_all_input(t_ls *ls)
 {
 	t_node	*node;
 	size_t	size;
 
 	node = ls->dirs->head;
 	size = ls->dirs->size;
-	/* use size, because in recursion i will add elements to list */
 	while (size != 0)
 	{
 		if (ls->flags & FLAG_RR)
@@ -34,7 +33,7 @@ static void through_all_input(t_ls *ls)
 	}
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_ls	*ls;
 

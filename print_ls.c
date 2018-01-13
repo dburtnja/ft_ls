@@ -1,19 +1,19 @@
 /* ************************************************************************** */
-/*																			  */
-/*														  :::	   ::::::::   */
-/*	 print_ls.c											:+:		 :+:	:+:   */
-/*													  +:+ +:+		  +:+	  */
-/*	 By: dburtnja <marvin@42.fr>					+#+  +:+	   +#+		  */
-/*												  +#+#+#+#+#+	+#+			  */
-/*	 Created: 2018/01/13 11:06:57 by dburtnja		   #+#	  #+#			  */
-/*	 Updated: 2018/01/13 11:06:57 by dburtnja		  ###	########.fr		  */
-/*																			  */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_ls.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/13 14:55:48 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/01/13 14:57:15 by dburtnja         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/ioctl.h>
 #include "ft_ls.h"
 
-static void print_dirs(t_doubly_list *dirs, int flags)
+static void	print_dirs(t_doubly_list *dirs, int flags)
 {
 	struct winsize	w;
 	size_t			width;
@@ -37,7 +37,7 @@ static void print_dirs(t_doubly_list *dirs, int flags)
 	}
 }
 
-void	print_ls(t_ls *ls)
+void		print_ls(t_ls *ls)
 {
 	print_dirs(ls->dirs, ls->flags);
 }

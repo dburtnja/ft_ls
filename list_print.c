@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 11:09:51 by dburtnja          #+#    #+#             */
-/*   Updated: 2018/01/13 11:13:26 by dburtnja         ###   ########.fr       */
+/*   Updated: 2018/01/13 13:33:18 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ static char	*create_format_string(int *array)
 			array[1],
 			array[2],
 			array[3],
-			array[4]
-	);
+			array[4]);
 	return (format);
 }
 
-static void put_columns(char *format, char **line)
+static void	put_columns(char *format, char **line)
 {
 	ft_printf(
 			format,
@@ -37,11 +36,10 @@ static void put_columns(char *format, char **line)
 			line[3],
 			line[4],
 			&line[5][4],
-			line[6]
-	);
+			line[6]);
 }
 
-static void simple_list_print(t_doubly_list *files)
+static void	simple_list_print(t_doubly_list *files)
 {
 	int		*column_sizes;
 	char	***lines_array;
@@ -63,7 +61,7 @@ static void simple_list_print(t_doubly_list *files)
 	}
 }
 
-void list_print(t_dir *dir)
+void		list_print(t_dir *dir)
 {
 	simple_list_print(dir->files);
 }

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_arguments.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/13 13:27:17 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/01/13 13:28:41 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 #include "libft/libft.h"
@@ -15,7 +26,7 @@ static int	flag_selector(char f)
 	if (f == 't')
 		return (FLAG_T);
 	error(ft_strjoin("No such flag: ", &f), -2);
-	return 0;
+	return (0);
 }
 
 static int	read_flags_letters(char *flag)
@@ -56,7 +67,8 @@ void		read_arguments(t_ls *ls, char **args, int args_size)
 		else if (args[i][0] == '-')
 			ls->flags |= read_flags_letters(args[i] + 1);
 		else
-			add_to_back(ls->dirs, new_node(new_dir(args[i], NULL), sizeof_dir_struct));
+			add_to_back(ls->dirs, new_node(new_dir(args[i], NULL),
+						sizeof_dir_struct));
 		i++;
 	}
 	if (ls->dirs->size == 0)

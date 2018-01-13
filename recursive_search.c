@@ -1,18 +1,26 @@
-//
-// Created by denys on 10/22/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   recursive_search.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/13 12:39:11 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/01/13 12:39:52 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
 int		file_is_directory(t_file *file)
 {
 	if (ft_strcmp(file->file_name, ".") == 0)
-		return FALSE;
+		return (FALSE);
 	if (ft_strcmp(file->file_name, "..") == 0)
-		return FALSE;
+		return (FALSE);
 	if (S_ISDIR(file->info.st_mode))
-		return TRUE;
-	return FALSE;
+		return (TRUE);
+	return (FALSE);
 }
 
 void    recursive_search(t_ls *ls, t_dir *dir)

@@ -1,6 +1,14 @@
-//
-// Created by denys on 25.11.17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_print.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/13 11:09:51 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/01/13 11:13:26 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
@@ -16,7 +24,7 @@ static char	*create_format_string(int *array)
 			array[3],
 			array[4]
 	);
-	return format;
+	return (format);
 }
 
 static void put_columns(char *format, char **line)

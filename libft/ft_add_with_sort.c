@@ -1,6 +1,14 @@
-//
-// Created by denys on 19.11.17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_add_with_sort.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/13 09:36:23 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/01/13 09:54:45 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
@@ -14,7 +22,7 @@ static void		add_to_list(t_doubly_list *sort_list, t_node *p, t_node *node)
 	{
 		sort_val = sort_list->sort_func(p, node, sort_list->sort_data);
 		if (sort_val > 0 || (rev && sort_val < 0))
-			break;
+			break ;
 		p = p->next;
 	}
 	add_after_node(sort_list, p->prev, node);
@@ -38,7 +46,6 @@ static void		add_to_existing(t_doubly_list *sort_list, t_node *node)
 
 void			ft_add_with_sort(t_doubly_list *sort_list, t_node *node)
 {
-
 	if (sort_list->sort == FALSE)
 	{
 		ft_putendl("Can't add node to not sorted list");

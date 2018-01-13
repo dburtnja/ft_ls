@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   my_sort_func.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/13 12:40:02 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/01/13 12:41:20 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 static char my_to_lower(char c)
 {
-	return (char) ft_tolower(c);
+	return ((char)ft_tolower(c));
 }
 
 static int	my_strcmp(const unsigned char *s1, const unsigned char *s2)
@@ -19,11 +31,11 @@ static int	my_strcmp(const unsigned char *s1, const unsigned char *s2)
 		while (s2[second] && ft_isascii(s2[second]) && !ft_isalnum(s2[second]))
 			second++;
 		if (s1[first] != s2[second] || !s1[first] || !s2[second])
-			break;
+			break ;
 		first++;
 		second++;
 	}
-	return s1[first] - s2[second];
+	return (s1[first] - s2[second]);
 }
 
 int			by_name(t_node *first, t_node *second, int type)
@@ -42,7 +54,7 @@ int			by_name(t_node *first, t_node *second, int type)
 		second_name = ft_strmap(((t_file *) second->data)->file_name, &my_to_lower);
 	}
 	if (type == TYPE_FILE || type == TYPE_DIR)
-		return my_strcmp((unsigned char *) first_name, (unsigned char *) second_name);
+		return (my_strcmp((unsigned char *) first_name, (unsigned char *) second_name));
 	else
 		return (0);
 }
@@ -63,8 +75,8 @@ int			by_mod_time(t_node *first, t_node *second, int type)
 		second_time =((t_file *) second->data)->info.st_mtimespec.tv_sec;
 	}
 	if (type == TYPE_FILE || type == TYPE_DIR)
-		return first_time == second_time ? by_name(first, second, type) :
-			   first_time < second_time;
+		return (first_time == second_time ? by_name(first, second, type) :
+			   first_time < second_time);
 	else
 		return (0);
 }

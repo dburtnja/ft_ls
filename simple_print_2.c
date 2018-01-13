@@ -1,26 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simple_print_2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/13 13:08:46 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/01/13 13:12:25 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static size_t   get_column_size(t_file ***array, size_t column_nbr)
+static size_t	get_column_size(t_file ***array, size_t column_nbr)
 {
-	size_t  line;
-	size_t  column_size;
+	size_t	line;
+	size_t	column_size;
 
 	line = 0;
 	column_size = 0;
 	while (array[line])
 	{
-		if (array[line][column_nbr] && column_size < array[line][column_nbr]->name_len)
-			column_size = (size_t) array[line][column_nbr]->name_len;
+		if (array[line][column_nbr] &&
+				column_size < array[line][column_nbr]->name_len)
+			column_size = (size_t)array[line][column_nbr]->name_len;
 		line++;
 	}
-	return column_size;
+	return (column_size);
 }
 
-size_t 			*get_column_sizes(t_file ***array, size_t columns)
+size_t			*get_column_sizes(t_file ***array, size_t columns)
 {
-	size_t  column_nbr;
-	size_t  *column_sizes;
+	size_t	column_nbr;
+	size_t	*column_sizes;
 
 	column_nbr = 0;
 	column_sizes = ft_memalloc_error(sizeof(size_t*) * (columns + 1));
@@ -31,14 +43,14 @@ size_t 			*get_column_sizes(t_file ***array, size_t columns)
 			column_sizes[column_nbr] += 2;
 		column_nbr++;
 	}
-	return column_sizes;
+	return (column_sizes);
 }
 
-
-static t_file   **make_line(t_file **files, size_t line_nbr, size_t line_nbrs, size_t columns, size_t files_size)
+static t_file	**make_line(t_file **files, size_t line_nbr, size_t line_nbrs,
+		size_t columns, size_t files_size)
 {
-	size_t  j;
-	t_file  **result;
+	size_t	j;
+	t_file	**result;
 
 	j = 0;
 	result = ft_memalloc_error(sizeof(t_file*) * (columns + 1));
@@ -48,14 +60,14 @@ static t_file   **make_line(t_file **files, size_t line_nbr, size_t line_nbrs, s
 		line_nbr += line_nbrs;
 		j++;
 	}
-	return result;
+	return (result);
 }
 
 t_file			***make_lines(t_doubly_list* list, size_t line_nbrs, size_t columns)
 {
-	t_file  ***lines;
-	size_t  i;
-	t_file  **files;
+	t_file	***lines;
+	size_t	i;
+	t_file	**files;
 
 	files = ft_double_list_to_array(list);
 	lines = ft_memalloc_error(sizeof(t_file **) * (line_nbrs + 1));
@@ -66,5 +78,5 @@ t_file			***make_lines(t_doubly_list* list, size_t line_nbrs, size_t columns)
 		i++;
 	}
 	ft_memdel((void **) &files);
-	return lines;
+	return (lines);
 }

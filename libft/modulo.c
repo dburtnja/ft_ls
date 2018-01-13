@@ -1,10 +1,18 @@
-//
-// Created by denys on 9/11/17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   modulo.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/13 09:05:45 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/01/13 09:21:49 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-long    ft_modulo(long number)
+long	ft_modulo(long number)
 {
-    if (number < 0)
-        return -number;
-    return number;
+	if (number < 0)
+		return (-number);
+	return (number);
 }

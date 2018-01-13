@@ -1,10 +1,18 @@
-//
-// Created by denys on 19.11.17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_double_list_nodes.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/13 09:55:27 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/01/13 09:55:29 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-void            add_to_front(t_doubly_list *list, t_node *node)
+void	add_to_front(t_doubly_list *list, t_node *node)
 {
 	if (list->sort)
 	{
@@ -20,7 +28,7 @@ void            add_to_front(t_doubly_list *list, t_node *node)
 	(list->size)++;
 }
 
-void            add_to_back(t_doubly_list *list, t_node *node)
+void	add_to_back(t_doubly_list *list, t_node *node)
 {
 	if (list->sort)
 	{
@@ -41,7 +49,7 @@ int		add_after_node(t_doubly_list *list, t_node *after, t_node *node)
 	t_node	*buf;
 
 	if (after == NULL)
-		return FALSE;
+		return (FALSE);
 	buf = after->next;
 	after->next = node;
 	node->prev = after;
@@ -51,5 +59,5 @@ int		add_after_node(t_doubly_list *list, t_node *after, t_node *node)
 		node->next = buf;
 	}
 	(list->size)++;
-	return TRUE;
+	return (TRUE);
 }

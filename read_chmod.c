@@ -1,6 +1,14 @@
-//
-// Created by denys on 25.11.17.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_chmod.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/13 12:43:12 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/01/13 13:17:28 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 #include <sys/xattr.h>
@@ -8,17 +16,17 @@
 static char	get_type(mode_t st_mode)
 {
 	if (S_ISREG(st_mode))
-		return '-';
+		return ('-');
 	else if (S_ISDIR(st_mode))
-		return 'd';
+		return ('d');
 	else if (S_ISLNK(st_mode))
-		return  'l';
+		return ('l');
 	else if (S_ISBLK(st_mode))
-		return 'b';
+		return ('b');
 	else if (S_ISCHR(st_mode))
-		return 'c';
+		return ('c');
 	else if (S_ISFIFO(st_mode))
-		return 'p';
+		return ('p');
 	return (' ');
 }
 
@@ -45,13 +53,14 @@ static char	add_attribute_marker(char *file_name)
 	xattr = listxattr(file_name, NULL, 0, XATTR_NOFOLLOW);
 	if (xattr > 0)
 		return ('@');
-	xattr = getxattr(file_name, "system.posix_acl_default", NULL, 0, 0, XATTR_NOFOLLOW);
+	xattr = getxattr(file_name, "system.posix_acl_default", NULL, 0, 0,
+			XATTR_NOFOLLOW);
 	if (xattr > 0)
 		return ('+');
 	return (0);
 }
 
-char *read_chmod(struct stat info, char *file_name)
+char		*read_chmod(struct stat info, char *file_name)
 {
 	char	*chmod;
 

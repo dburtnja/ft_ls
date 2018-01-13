@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_print_2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/13 12:46:31 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/01/13 12:47:00 by dburtnja         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <time.h>
 #include "ft_ls.h"
@@ -29,7 +40,7 @@ static char	**create_simple_line_array(t_file *file, int *column_sizes)
 	line_array[5] = ft_strdup(ctime(&(file->info.st_mtimespec.tv_sec)));
 	line_array[6] = file->file_name;
 	update_column_sizes(column_sizes, line_array);
-	return line_array;
+	return (line_array);
 }
 
 size_t		create_simple_lines_arrays(t_node *file, int *column_sizes, char
@@ -47,6 +58,6 @@ size_t		create_simple_lines_arrays(t_node *file, int *column_sizes, char
 		file = file->next;
 		i++;
 	}
-	return total_blocks;
+	return (total_blocks);
 }
 

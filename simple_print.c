@@ -35,25 +35,6 @@ static void	print_lines(t_file ***array, size_t column_size)
 	}
 }
 
-static int	line_in_range(t_file ***array, size_t width, size_t columns,
-		size_t **ret_column_sizes)
-{
-	size_t	*column_sizes;
-	size_t	line_size;
-	int		column_nbr;
-
-	line_size = 0;
-	column_sizes = get_column_sizes(array, columns);
-	column_nbr = 0;
-	while (column_sizes[column_nbr])
-	{
-		line_size += column_sizes[column_nbr];
-		column_nbr++;
-	}
-	*ret_column_sizes = column_sizes;
-	return (line_size <= width);
-}
-
 size_t		get_max_file_name(t_doubly_list *list)
 {
 	t_node	*node;

@@ -12,6 +12,21 @@
 
 #include "ft_ls.h"
 
+static char	*create_format_string(size_t column_size, size_t file_name_size)
+{
+	char	*tabs;
+	size_t	tabs_nbr;
+	char	*result;
+
+	tabs_nbr = (column_size - file_name_size + 3) / 4;
+	tabs = ft_memalloc_error(tabs_nbr);
+	ft_memset(tabs, '\t', tabs_nbr);
+	tabs[tabs_nbr] = 0;
+	result = ft_format("%%s%s", tabs);
+	ft_strdel(&tabs);
+	return result;
+}
+
 static void	print_lines(t_file ***array, size_t column_size)
 {
 	int		lines;
@@ -24,7 +39,7 @@ static void	print_lines(t_file ***array, size_t column_size)
 		columns = 0;
 		while (array[lines][columns])
 		{
-			format =ft_format("%%-%ds", column_size);
+			format = create_format_string(column_size, array[lines][columns]->name_len);
 			ft_printf(format, array[lines][columns]->file_name);
 			ft_strdel(&format);
 			columns++;

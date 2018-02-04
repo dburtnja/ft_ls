@@ -12,6 +12,21 @@
 
 #include "ft_ls.h"
 
+static char	*create_format_string(size_t column_size, size_t file_name_size)
+{
+	char	*tabs;
+	size_t	tabs_nbr;
+	char	*result;
+
+	tabs_nbr = (column_size - file_name_size + 3) / 4;
+	tabs = ft_memalloc_error(tabs_nbr);
+	ft_memset(tabs, '\t', tabs_nbr);
+	tabs[tabs_nbr] = 0;
+	result = ft_format("%%s%s", tabs);
+	ft_strdel(&tabs);
+	return result;
+}
+
 static void	print_lines(t_file ***array, size_t column_size)
 {
 	int		lines;
@@ -24,7 +39,7 @@ static void	print_lines(t_file ***array, size_t column_size)
 		columns = 0;
 		while (array[lines][columns])
 		{
-			format =ft_format("%%-%ds", column_size);
+			format = create_format_string(column_size, array[lines][columns]->name_len);
 			ft_printf(format, array[lines][columns]->file_name);
 			ft_strdel(&format);
 			columns++;
@@ -33,25 +48,6 @@ static void	print_lines(t_file ***array, size_t column_size)
 		if (array[lines])
 			ft_putendl("");
 	}
-}
-
-static int	line_in_range(t_file ***array, size_t width, size_t columns,
-		size_t **ret_column_sizes)
-{
-	size_t	*column_sizes;
-	size_t	line_size;
-	int		column_nbr;
-
-	line_size = 0;
-	column_sizes = get_column_sizes(array, columns);
-	column_nbr = 0;
-	while (column_sizes[column_nbr])
-	{
-		line_size += column_sizes[column_nbr];
-		column_nbr++;
-	}
-	*ret_column_sizes = column_sizes;
-	return (line_size <= width);
 }
 
 size_t		get_max_file_name(t_doubly_list *list)

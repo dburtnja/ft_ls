@@ -12,17 +12,7 @@
 
 #include "ft_ls.h"
 
-static char	*get_format_string(t_file **line, size_t *column_sizes, int columns)
-{
-	size_t	size;
-
-	size = line[columns + 1] == NULL ? 0 : column_sizes[columns];
-	if (((unsigned char*)line[columns]->file_name)[0] > 127)
-		size = (size - line[columns]->name_len) + line[columns]->name_len * 2;
-	return (ft_format("%%-%ds", size));
-}
-
-static void	print_lines(t_file ***array, size_t *column_sizes)
+static void	print_lines(t_file ***array, size_t column_size)
 {
 	int		lines;
 	int		columns;
@@ -34,7 +24,7 @@ static void	print_lines(t_file ***array, size_t *column_sizes)
 		columns = 0;
 		while (array[lines][columns])
 		{
-			format = get_format_string(array[lines], column_sizes, columns);
+			format =ft_format("%%-%ds", column_size);
 			ft_printf(format, array[lines][columns]->file_name);
 			ft_strdel(&format);
 			columns++;
@@ -64,25 +54,33 @@ static int	line_in_range(t_file ***array, size_t width, size_t columns,
 	return (line_size <= width);
 }
 
+size_t		get_max_file_name(t_doubly_list *list)
+{
+	t_node	*node;
+	size_t	max;
+
+	node = list->head;
+	max = ((t_file*)node->data)->name_len;
+	while (node) {
+		if (max < ((t_file *) node->data)->name_len)
+			max = ((t_file *) node->data)->name_len;
+		node = node->next;
+	}
+	return max;
+}
+
 void		simple_print(t_doubly_list *list, size_t width)
 {
 	size_t			lines_nbr;
 	size_t			columns;
-	size_t			*columns_sizes;
 	t_file			***lines_to_print;
+	size_t			max;
 
-	lines_nbr = 1;
-	while (TRUE)
-	{
-		columns = ((list->size + (lines_nbr - 1)) / lines_nbr);
-		lines_to_print = make_lines(list, lines_nbr, columns);
-		if (line_in_range(lines_to_print, width, columns, &columns_sizes) ||
-				columns == 1)
-			break ;
-		ft_memdel((void **)&columns_sizes);
-		lines_nbr++;
-	}
-	print_lines(lines_to_print, columns_sizes);
+	max = get_max_file_name(list) + 4;
+	columns = ((width + (max - 1)) / max);
+	lines_nbr = ((list->size + (columns - 1)) / columns);
+	lines_to_print = make_lines(list, lines_nbr, columns);
+	print_lines(lines_to_print, max);
 	if (lines_to_print[0][0])
 		ft_putendl("");
 }

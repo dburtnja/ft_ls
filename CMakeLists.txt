@@ -1,13 +1,13 @@
-cmake_minimum_required(VERSION 3.8)
+# cmake_minimum_required(VERSION <specify CMake version here>)
 project(ft_ls)
 
-set(CMAKE_CXX_STANDARD C99)
-#set (CMAKE_C_FLAGS "-g -Wall -Wextra")
+set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES
+add_executable(ft_ls
         libft/ft_printf/check_nbr.c
         libft/ft_printf/check_type.c
         libft/ft_printf/ft_atoi_mod.c
+        libft/ft_printf/ft_formatf.c
         libft/ft_printf/ft_itoa_base.c
         libft/ft_printf/ft_itoa_d.c
         libft/ft_printf/ft_itoa_p.c
@@ -34,9 +34,14 @@ set(SOURCE_FILES
         libft/ft_printf/mod_void.c
         libft/ft_printf/processing_wint_t.c
         libft/ft_printf/read_str.c
+        libft/ft_abs.c
+        libft/ft_add_with_sort.c
         libft/ft_atoi.c
         libft/ft_atoi_move.c
         libft/ft_bzero.c
+        libft/ft_double_list_nodes.c
+        libft/ft_double_list_to_array.c
+        libft/ft_doubly_list.c
         libft/ft_isalnum.c
         libft/ft_isalpha.c
         libft/ft_isascii.c
@@ -53,6 +58,7 @@ set(SOURCE_FILES
         libft/ft_lstnew.c
         libft/ft_lstprint_str.c
         libft/ft_memalloc.c
+        libft/ft_memalloc_error.c
         libft/ft_memccpy.c
         libft/ft_memchr.c
         libft/ft_memcmp.c
@@ -70,6 +76,7 @@ set(SOURCE_FILES
         libft/ft_putstr.c
         libft/ft_putstr_array.c
         libft/ft_putstr_fd.c
+        libft/ft_sort_doubly_list.c
         libft/ft_strcat.c
         libft/ft_strchr.c
         libft/ft_strclr.c
@@ -102,22 +109,22 @@ set(SOURCE_FILES
         libft/get_next_line.c
         libft/get_next_line.h
         libft/libft.h
-        ft_ls.c
-        ft_ls.h read_arguments.c
-        libft/ft_memalloc_error.c
-        error.c
-        libft/ft_doubly_list.c
         libft/modulo.c
-        libft/ft_abs.c
+        libft/swap_nodes.c
+        directory.c
         directory_struct.c
-        recursive_search.c
-        directory.c file.c
-        libft/ft_printf/ft_formatf.c
+        error.c
+        file.c
+        ft_ls.c
+        ft_ls.h
+        get_owner_and_groupe_name.c
+        list_print.c
+        list_print_2.c
+        my_sort_func.c
         print_ls.c
-        libft/ft_sort_doubly_list.c
-        sort_before_print.c
+        read_arguments.c
+        read_chmod.c
+        recursive_search.c
         simple_print.c
-        libft/ft_double_list_to_array.c
-        libft/swap_nodes.c libft/ft_double_list_nodes.c libft/ft_add_with_sort.c my_sort_func.c list_print.c read_chmod.c get_owner_and_groupe_name.c simple_print_2.c list_print_2.c)
-
-add_executable(ft_ls ${SOURCE_FILES})
+        simple_print_2.c
+        sort_before_print.c)

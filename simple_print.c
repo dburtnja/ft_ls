@@ -74,6 +74,7 @@ void		simple_print(t_doubly_list *list, size_t width)
 
 	max = get_max_file_name(list) + 4;
 	columns = ((width + (max - 1)) / max);
+	columns = columns ? columns : 1;
 	lines_nbr = ((list->size + (columns - 1)) / columns);
 	lines_to_print = make_lines(list, lines_nbr, columns);
 	print_lines(lines_to_print, max);

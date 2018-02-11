@@ -23,6 +23,8 @@
 # define TYPE_DIR 1
 # define TYPE_FILE 2
 
+# define TAB_SIZE 8
+
 # include "libft/libft.h"
 # include <stdio.h>
 # include <dirent.h>

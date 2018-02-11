@@ -12,13 +12,16 @@
 
 #include "ft_ls.h"
 
-static char	*create_format_string(size_t column_size, size_t file_name_size)
+static char	*create_format_string(size_t column_size, size_t file_name_size,
+									 void *mem)
 {
 	char	*tabs;
 	size_t	tabs_nbr;
 	char	*result;
 
-	tabs_nbr = (column_size - file_name_size + 3) / 4;
+	if (!mem)
+		return ft_strdup("%s");
+	tabs_nbr = (column_size - file_name_size + TAB_SIZE - 1) / TAB_SIZE;
 	tabs = ft_memalloc_error(tabs_nbr);
 	ft_memset(tabs, '\t', tabs_nbr);
 	tabs[tabs_nbr] = 0;
@@ -39,7 +42,9 @@ static void	print_lines(t_file ***array, size_t column_size)
 		columns = 0;
 		while (array[lines][columns])
 		{
-			format = create_format_string(column_size, array[lines][columns]->name_len);
+			format = create_format_string(column_size,
+										  array[lines][columns]->name_len,
+										  array[lines][columns + 1]);
 			ft_printf(format, array[lines][columns]->file_name);
 			ft_strdel(&format);
 			columns++;
@@ -50,7 +55,7 @@ static void	print_lines(t_file ***array, size_t column_size)
 	}
 }
 
-size_t		get_max_file_name(t_doubly_list *list)
+static size_t	get_max_file_name(t_doubly_list *list)
 {
 	t_node	*node;
 	size_t	max;
@@ -62,6 +67,7 @@ size_t		get_max_file_name(t_doubly_list *list)
 			max = ((t_file *) node->data)->name_len;
 		node = node->next;
 	}
+	max = max + (TAB_SIZE - (max % TAB_SIZE));
 	return max;
 }
 
@@ -72,8 +78,15 @@ void		simple_print(t_doubly_list *list, size_t width)
 	t_file			***lines_to_print;
 	size_t			max;
 
-	max = get_max_file_name(list) + 4;
-	columns = ((width + (max - 1)) / max);
+//	width = 61;
+	char *tabs = ft_memalloc_error(width + 1);
+	ft_memset(tabs, '#', width);
+	tabs[width + 1] = 0;
+	ft_putendl(tabs);
+
+	max = get_max_file_name(list);
+//	columns = ((width + (max - 1)) / max);
+	columns = width / max;
 	columns = columns ? columns : 1;
 	lines_nbr = ((list->size + (columns - 1)) / columns);
 	lines_to_print = make_lines(list, lines_nbr, columns);

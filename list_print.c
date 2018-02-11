@@ -17,7 +17,7 @@ static char	*create_format_string(int *array)
 	char	*format;
 
 	format = ft_format(
-			"%%-%ds %%-%ds %%-%ds %%-%ds %%-%ds %%.12s %%-s\n",
+			"%%-%ds  %%%ds %%-%ds  %%-%ds  %%%ds %%.12s %%-s\n",
 			array[0],
 			array[1],
 			array[2],

@@ -78,14 +78,7 @@ void		simple_print(t_doubly_list *list, size_t width)
 	t_file			***lines_to_print;
 	size_t			max;
 
-//	width = 61;
-	char *tabs = ft_memalloc_error(width + 1);
-	ft_memset(tabs, '#', width);
-	tabs[width + 1] = 0;
-	ft_putendl(tabs);
-
 	max = get_max_file_name(list);
-//	columns = ((width + (max - 1)) / max);
 	columns = width / max;
 	columns = columns ? columns : 1;
 	lines_nbr = ((list->size + (columns - 1)) / columns);

@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/13 13:04:49 by dburtnja          #+#    #+#             */
-/*   Updated: 2018/10/19 16:15:06 by dburtnja         ###   ########.fr       */
+/*   Created: 2018/10/19 16:24:32 by dburtnja          #+#    #+#             */
+/*   Updated: 2018/10/19 16:25:42 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static char	*create_format_string(size_t column_size, size_t file_name_size,
+static char		*create_format_string(size_t column_size, size_t file_name_size,
 		void *mem)
 {
 	char	*tabs;
@@ -30,7 +30,7 @@ static char	*create_format_string(size_t column_size, size_t file_name_size,
 	return (result);
 }
 
-static void	print_lines(t_file ***array, size_t column_size)
+static void		print_lines(t_file ***array, size_t column_size)
 {
 	int		lines;
 	int		columns;
@@ -72,7 +72,7 @@ static size_t	get_max_file_name(t_doubly_list *list)
 	return (max);
 }
 
-void		simple_print(t_doubly_list *list, size_t width)
+void			simple_print(t_doubly_list *list, size_t width)
 {
 	size_t			lines_nbr;
 	size_t			columns;

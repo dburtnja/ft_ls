@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 13:08:46 by dburtnja          #+#    #+#             */
-/*   Updated: 2018/01/13 13:12:25 by dburtnja         ###   ########.fr       */
+/*   Updated: 2018/10/19 16:28:26 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ static t_file	**make_line(t_file **files, size_t line_nbr, size_t line_nbrs,
 	return (result);
 }
 
-t_file			***make_lines(t_doubly_list* list, size_t line_nbrs, size_t columns)
+t_file			***make_lines(t_doubly_list *list, size_t line_nbrs,
+		size_t columns)
 {
 	t_file	***lines;
 	size_t	i;
@@ -77,6 +78,6 @@ t_file			***make_lines(t_doubly_list* list, size_t line_nbrs, size_t columns)
 		lines[i] = make_line(files, i, line_nbrs, columns, list->size);
 		i++;
 	}
-	ft_memdel((void **) &files);
+	ft_memdel((void **)&files);
 	return (lines);
 }

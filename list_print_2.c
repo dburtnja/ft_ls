@@ -6,7 +6,7 @@
 /*   By: dburtnja <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:46:31 by dburtnja          #+#    #+#             */
-/*   Updated: 2018/01/13 13:31:13 by dburtnja         ###   ########.fr       */
+/*   Updated: 2018/10/19 16:38:12 by dburtnja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	**create_simple_line_array(t_file *file, int *column_sizes)
 {
 	char	**line_array;
 
-	major()
+	major(1);
 	line_array = ft_memalloc_error(sizeof(char *) * 8);
 	line_array[0] = read_chmod(file->info, file->file_with_path);
 	line_array[1] = ft_itoa((int)file->info.st_nlink);
